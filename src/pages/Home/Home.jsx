@@ -1,6 +1,7 @@
 import Header from '../../components/Header'
 import SideNav from '../../components/SideNav'
 import styled from 'styled-components'
+import data from '../../data/data.js'
 import Title from '../../components/Title'
 
 const ContentDiv = styled.div`
