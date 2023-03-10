@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
-import logo from '../../assets/logo.svg'
+import logo from '../assets/logo.svg'
 
 const StyledHeader = styled.header`
   padding: 20px;
