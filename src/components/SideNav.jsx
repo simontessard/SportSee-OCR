@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import logoMeditation from '../assets/meditation.svg'
-import logoSwim from '../assets/swim.svg'
-import logoBike from '../assets/bike.svg'
-import logoGym from '../assets/gym.svg'
+import logoMeditation from '../assets/sidebar/meditation.svg'
+import logoSwim from '../assets/sidebar/swim.svg'
+import logoBike from '../assets/sidebar/bike.svg'
+import logoGym from '../assets/sidebar/gym.svg'
 
 const StyledNav = styled.nav`
   padding: 20px;
