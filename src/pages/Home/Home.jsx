@@ -1,6 +1,7 @@
 import Header from '../../components/Header'
 import SideNav from '../../components/SideNav'
 import styled from 'styled-components'
+import Title from '../../components/Title'
 
 const ContentDiv = styled.div`
   display: flex;
@@ -18,7 +19,9 @@ function Home() {
       <Header />
       <ContentDiv>
         <SideNav />
-        <DataDiv></DataDiv>
+        <DataDiv>
+          <Title name={data.USER_MAIN_DATA[0].userInfos.firstName} />
+        </DataDiv>
       </ContentDiv>
     </div>
   )
