@@ -5,6 +5,7 @@ const StyledImg = styled.img`
   width: 60px;
 `
 const Card = styled.div`
+  max-width: 200px;
   display: flex;
   flex-direction: row;
   background: #fbfbfb;
