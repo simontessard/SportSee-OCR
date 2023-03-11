@@ -21,7 +21,10 @@ function Title(props) {
       <StyledH1>
         Bonjour <StyledName>{props.name}</StyledName>
       </StyledH1>
-      <StyledP> Félicitations ! Vous avez explosé vos objectifs hier </StyledP>
+      <StyledP>
+        {' '}
+        Félicitation ! Vous avez explosé vos objectifs hier 👏{' '}
+      </StyledP>
     </div>
   )
 }
