@@ -10,12 +10,16 @@ import { useParams } from 'react-router-dom'
 const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 50px;
 `
 
 const DataDiv = styled.div`
-  margin-left: 100px;
+  margin-left: 50px;
   margin-top: 70px;
   flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 `
 
 function Home() {
