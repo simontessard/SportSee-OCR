@@ -20,6 +20,33 @@ const StyledResponsiveContainer = styled(ResponsiveContainer)`
   padding: 25px;
 `
 
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #e60000;
+  color: white;
+  border: 0;
+`
+
+export const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <StyledDiv>
+        {payload.map((pld) => (
+          <div style={{ display: 'inline-block', padding: 20 }}>
+            <div>
+              {pld.value}
+              {pld.dataKey === 'kilogram' ? 'kg' : 'Kcal'}
+            </div>
+          </div>
+        ))}
+      </StyledDiv>
+    )
+  }
+
+  return null
+}
+
 export default class Example extends PureComponent {
   constructor(props) {
     super(props)
@@ -54,7 +81,7 @@ export default class Example extends PureComponent {
             type="number"
             domain={['dataMin - 5', 'dataMax']}
           />
-          <Tooltip />
+          <Tooltip content={<CustomTooltip />} wrapperStyle={{ outline: 0 }} />
           <Legend iconType="circle" iconSize={8} height={80} align="right" verticalAlign="top" />
           <Bar name="Poids (kg)" dataKey="kilogram" fill="#282D30" radius={[10, 10, 0, 0]} />
           <Bar
