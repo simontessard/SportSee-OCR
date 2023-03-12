@@ -1,12 +1,12 @@
-import Header from '../../components/Header'
-import SideNav from '../../components/SideNav'
+import Header from '../components/Header'
+import SideNav from '../components/SideNav'
 import styled from 'styled-components'
-import Title from '../../components/Title'
-import AllStatsCards from '../../components/AllStatsCards'
-import BarChart from '../../components/BarChart'
+import Title from '../components/Title'
+import AllStatsCards from '../components/AllStatsCards'
+import BarChart from '../components/BarChart'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { fetchUserInfo, fetchUserActivity } from '../../api'
+import { fetchUserInfo, fetchUserActivity } from '../api'
 
 const ContentDiv = styled.div`
   display: flex;
