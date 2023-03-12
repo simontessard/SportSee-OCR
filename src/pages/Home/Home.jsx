@@ -14,6 +14,7 @@ const ContentDiv = styled.div`
 const DataDiv = styled.div`
   margin-left: 100px;
   margin-top: 70px;
+  flex-basis: 100%;
 `
 
 function Home() {
