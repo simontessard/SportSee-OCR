@@ -1,10 +1,11 @@
 import Header from '../../components/Header'
 import SideNav from '../../components/SideNav'
 import styled from 'styled-components'
-import data from '../../data/data.js'
 import Title from '../../components/Title'
 import AllStatsCards from '../../components/AllStatsCards'
 import BarChart from '../../components/BarChart'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 const ContentDiv = styled.div`
   display: flex;
@@ -18,16 +19,33 @@ const DataDiv = styled.div`
 `
 
 function Home() {
+  const { id } = useParams()
+  const [userData, setuserInfo] = useState({})
+
+  useEffect(() => {
+    fetch('http://localhost:3000/user/' + id)
+      .then((response) => response.json())
+      .then((data) => setuserInfo(data.data))
+  }, [id])
+
+  const [activityData, setActivityData] = useState([])
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/user/${id}/activity`)
+      .then((response) => response.json())
+      .then((data) => setActivityData(data.data.sessions))
+  }, [id])
+
   return (
     <div>
       <Header />
       <ContentDiv>
         <SideNav />
         <DataDiv>
-          <Title name={data.USER_MAIN_DATA[0].userInfos.firstName} />
+          {userData && userData.userInfos && <Title name={userData.userInfos.firstName} />}
           <ContentDiv>
-            <BarChart data={data.USER_ACTIVITY[0]} />
-            <AllStatsCards data={data.USER_MAIN_DATA[0].keyData} />
+            {activityData.length > 0 && <BarChart data={activityData} />}
+            <AllStatsCards data={userData.keyData ?? []} />
           </ContentDiv>
         </DataDiv>
       </ContentDiv>
