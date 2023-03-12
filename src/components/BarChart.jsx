@@ -16,7 +16,7 @@ export default class Example extends PureComponent {
     super(props)
 
     this.state = {
-      data: props.data.sessions,
+      data: props.data,
     }
   }
 
