@@ -32,8 +32,8 @@ export const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <StyledDiv>
-        {payload.map((pld) => (
-          <div style={{ display: 'inline-block', padding: 20 }}>
+        {payload.map((pld, index) => (
+          <div key={index} style={{ display: 'inline-block', padding: 20 }}>
             <div>
               {pld.value}
               {pld.dataKey === 'kilogram' ? 'kg' : 'Kcal'}
