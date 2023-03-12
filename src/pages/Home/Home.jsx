@@ -6,6 +6,7 @@ import AllStatsCards from '../../components/AllStatsCards'
 import BarChart from '../../components/BarChart'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { fetchUserInfo, fetchUserActivity } from '../../api'
 
 const ContentDiv = styled.div`
   display: flex;
@@ -24,20 +25,19 @@ const DataDiv = styled.div`
 
 function Home() {
   const { id } = useParams()
-  const [userData, setuserInfo] = useState({})
+
+  const [userData, setUserData] = useState([])
+  const [userActivity, setUserActivity] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3000/user/' + id)
-      .then((response) => response.json())
-      .then((data) => setuserInfo(data.data))
-  }, [id])
+    const fetchData = async () => {
+      const userData = await fetchUserInfo(id)
+      const userActivity = await fetchUserActivity(id)
 
-  const [activityData, setActivityData] = useState([])
-
-  useEffect(() => {
-    fetch(`http://localhost:3000/user/${id}/activity`)
-      .then((response) => response.json())
-      .then((data) => setActivityData(data.data.sessions))
+      setUserData(userData)
+      setUserActivity(userActivity)
+    }
+    fetchData()
   }, [id])
 
   return (
@@ -48,7 +48,9 @@ function Home() {
         <DataDiv>
           {userData && userData.userInfos && <Title name={userData.userInfos.firstName} />}
           <ContentDiv>
-            {activityData.length > 0 && <BarChart data={activityData} />}
+            {userActivity && userActivity.sessions && userActivity.sessions.length > 0 && (
+              <BarChart data={userActivity.sessions} />
+            )}
             <AllStatsCards data={userData.keyData ?? []} />
           </ContentDiv>
         </DataDiv>
