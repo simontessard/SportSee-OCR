@@ -11,6 +11,15 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
+import styled from 'styled-components'
+
+const StyledResponsiveContainer = styled(ResponsiveContainer)`
+  background: #fbfbfb;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+  border-radius: 5px;
+  padding: 25px;
+`
+
 export default class Example extends PureComponent {
   constructor(props) {
     super(props)
@@ -22,7 +31,7 @@ export default class Example extends PureComponent {
 
   render() {
     return (
-      <ResponsiveContainer width="70%" height={300}>
+      <StyledResponsiveContainer width="70%" height={300}>
         <BarChart
           data={this.state.data}
           margin={{
@@ -55,7 +64,7 @@ export default class Example extends PureComponent {
             radius={[10, 10, 0, 0]}
           />
         </BarChart>
-      </ResponsiveContainer>
+      </StyledResponsiveContainer>
     )
   }
 }
