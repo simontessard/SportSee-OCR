@@ -6,7 +6,7 @@ const Routing = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/user/:id" element={<Home />} />
       </Routes>
     </BrowserRouter>
   )
