@@ -8,7 +8,8 @@ const Routing = () => {
     <BrowserRouter>
       <Routes>
         <Route exact path="/user/:id" element={<Home />} />
-        <Route path="*" element={<Error />} />
+        <Route path="*" element={<Error text="Erreur : Page introuvable" />} />
+        <Route path="/error" element={<Error text="Erreur : utilisateur introuvable" />} />
       </Routes>
     </BrowserRouter>
   )

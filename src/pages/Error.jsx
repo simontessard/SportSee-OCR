@@ -13,13 +13,13 @@ const ErrorText = styled.div`
   font-size: 40px;
 `
 
-function Error() {
+function Error(props) {
   return (
     <div>
       <Header />
       <ContentDiv>
         <SideNav />
-        <ErrorText> Erreur : Page introuvable </ErrorText>
+        <ErrorText> {props.text}</ErrorText>
       </ContentDiv>
     </div>
   )
