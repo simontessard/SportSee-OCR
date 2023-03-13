@@ -39,6 +39,7 @@ const LegendTitle = styled.h3`
   font-size: 20px;
   line-height: 24px;
   color: #20253a;
+  margin-top: 0;
 `
 
 const LegendLi = styled.li`
