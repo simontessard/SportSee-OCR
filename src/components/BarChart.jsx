@@ -71,15 +71,23 @@ export default class Example extends PureComponent {
           barSize={7}
         >
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis tickLine={false} tickMargin={15} dataKey="day" />
+          <XAxis
+            tickLine={false}
+            tickMargin={15}
+            dataKey="day"
+            tick={{
+              fontSize: 14,
+            }}
+          />
           <YAxis
+            tick={{
+              fontSize: 14,
+            }}
             tickLine={false}
             tickMargin={30}
-            dataKey="kilogram"
             orientation="right"
             tickCount={3}
             type="number"
-            domain={['dataMin - 5', 'dataMax']}
           />
           <Tooltip content={<CustomTooltip />} wrapperStyle={{ outline: 0 }} />
           <Legend iconType="circle" iconSize={8} height={80} align="right" verticalAlign="top" />
