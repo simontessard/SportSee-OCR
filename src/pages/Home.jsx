@@ -2,7 +2,7 @@ import Header from '../components/Header'
 import SideNav from '../components/SideNav'
 import styled from 'styled-components'
 import Title from '../components/Title'
-import AllStatsCards from '../components/AllStatsCards'
+import StatsCardList from '../components/StatsCardList'
 import BarChart from '../components/BarChart'
 import LineChart from '../components/LineChart'
 import React, { useState, useEffect } from 'react'
@@ -73,7 +73,7 @@ function Home() {
                 )}
                 <LineChart data={userAverage.sessions} />
               </DataDiv2>
-              <AllStatsCards data={userData.keyData ?? []} />
+              <StatsCardList data={userData.keyData ?? []} />
             </ContentDiv>
           </DataDiv>
         )}
