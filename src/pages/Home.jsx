@@ -26,7 +26,7 @@ const DataDiv = styled.div`
 `
 
 const DataDiv2 = styled.div`
-  flex-basis: 100%;
+  flex-basis: 75%;
   display: flex;
   flex-direction: column;
   gap: 50px;

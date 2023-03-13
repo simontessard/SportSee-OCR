@@ -1,14 +1,5 @@
 import React, { PureComponent } from 'react'
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts'
+import { LineChart, Line, XAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import styled from 'styled-components'
 
 const StyledResponsiveContainer = styled(ResponsiveContainer)`
@@ -63,10 +54,8 @@ export default class Example extends PureComponent {
   }
   render() {
     return (
-      <StyledResponsiveContainer width={400} height={300}>
+      <StyledResponsiveContainer width="33%" height={200}>
         <LineChart
-          width={500}
-          height={300}
           data={this.state.data}
           margin={{
             top: 5,
