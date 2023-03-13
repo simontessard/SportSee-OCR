@@ -14,22 +14,22 @@ const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
   gap: 50px;
+  max-width: 1200px;
 `
 
 const DataDiv = styled.div`
   margin-left: 50px;
   margin-top: 50px;
-  flex-basis: 100%;
   display: flex;
   flex-direction: column;
   gap: 50px;
 `
 
 const DataDiv2 = styled.div`
-  flex-basis: 75%;
   display: flex;
   flex-direction: column;
   gap: 50px;
+  width: 100%;
 `
 
 function Home() {
@@ -71,7 +71,9 @@ function Home() {
                 {userActivity && userActivity.sessions && userActivity.sessions.length > 0 && (
                   <BarChart data={userActivity.sessions} />
                 )}
-                <LineChart data={userAverage.sessions} />
+                <ContentDiv>
+                  <LineChart data={userAverage.sessions} />
+                </ContentDiv>
               </DataDiv2>
               <StatsCardList data={userData.keyData ?? []} />
             </ContentDiv>
