@@ -41,12 +41,13 @@ function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const userData = await fetchUserInfo(id)
-      const userActivity = await fetchUserActivity(id)
-      const userAverage = await fetchUserAverage(id)
+      const [userData, userActivity, userAverage] = await Promise.all([
+        fetchUserInfo(id),
+        fetchUserActivity(id),
+        fetchUserAverage(id),
+      ])
 
       setUserData(userData)
-      setUserActivity(userActivity)
       setUserActivity(userActivity)
       setUserAverage(userAverage)
     }
