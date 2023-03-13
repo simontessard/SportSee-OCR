@@ -7,6 +7,7 @@ import BarChart from '../components/BarChart'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchUserInfo, fetchUserActivity } from '../api'
+import { Navigate } from 'react-router-dom'
 
 const ContentDiv = styled.div`
   display: flex;
@@ -40,20 +41,26 @@ function Home() {
     fetchData()
   }, [id])
 
+  if (userData === undefined) {
+    return <Navigate to="/error" replace={true} />
+  }
+
   return (
     <div>
       <Header />
       <ContentDiv>
         <SideNav />
-        <DataDiv>
-          {userData && userData.userInfos && <Title name={userData.userInfos.firstName} />}
-          <ContentDiv>
-            {userActivity && userActivity.sessions && userActivity.sessions.length > 0 && (
-              <BarChart data={userActivity.sessions} />
-            )}
-            <AllStatsCards data={userData.keyData ?? []} />
-          </ContentDiv>
-        </DataDiv>
+        {userData && (
+          <DataDiv>
+            {userData && userData.userInfos && <Title name={userData.userInfos.firstName} />}
+            <ContentDiv>
+              {userActivity && userActivity.sessions && userActivity.sessions.length > 0 && (
+                <BarChart data={userActivity.sessions} />
+              )}
+              <AllStatsCards data={userData.keyData ?? []} />
+            </ContentDiv>
+          </DataDiv>
+        )}
       </ContentDiv>
     </div>
   )
