@@ -4,9 +4,10 @@ import styled from 'styled-components'
 import Title from '../components/Title'
 import AllStatsCards from '../components/AllStatsCards'
 import BarChart from '../components/BarChart'
+import LineChart from '../components/LineChart'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { fetchUserInfo, fetchUserActivity } from '../api'
+import { fetchUserInfo, fetchUserActivity, fetchUserAverage } from '../api'
 import { Navigate } from 'react-router-dom'
 
 const ContentDiv = styled.div`
@@ -17,7 +18,14 @@ const ContentDiv = styled.div`
 
 const DataDiv = styled.div`
   margin-left: 50px;
-  margin-top: 70px;
+  margin-top: 50px;
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+`
+
+const DataDiv2 = styled.div`
   flex-basis: 100%;
   display: flex;
   flex-direction: column;
@@ -29,14 +37,18 @@ function Home() {
 
   const [userData, setUserData] = useState([])
   const [userActivity, setUserActivity] = useState([])
+  const [userAverage, setUserAverage] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       const userData = await fetchUserInfo(id)
       const userActivity = await fetchUserActivity(id)
+      const userAverage = await fetchUserAverage(id)
 
       setUserData(userData)
       setUserActivity(userActivity)
+      setUserActivity(userActivity)
+      setUserAverage(userAverage)
     }
     fetchData()
   }, [id])
@@ -54,9 +66,12 @@ function Home() {
           <DataDiv>
             {userData && userData.userInfos && <Title name={userData.userInfos.firstName} />}
             <ContentDiv>
-              {userActivity && userActivity.sessions && userActivity.sessions.length > 0 && (
-                <BarChart data={userActivity.sessions} />
-              )}
+              <DataDiv2>
+                {userActivity && userActivity.sessions && userActivity.sessions.length > 0 && (
+                  <BarChart data={userActivity.sessions} />
+                )}
+                <LineChart data={userAverage.sessions} />
+              </DataDiv2>
               <AllStatsCards data={userData.keyData ?? []} />
             </ContentDiv>
           </DataDiv>
