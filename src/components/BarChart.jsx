@@ -27,6 +27,36 @@ const StyledDiv = styled.div`
   border: 0;
 `
 
+const LegendDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
+
+const LegendTitle = styled.h3`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #20253a;
+`
+
+const LegendLi = styled.li`
+  display: inline;
+  color: rgba(116, 121, 140, 1);
+  font-size: 16px;
+  margin-right: 30px;
+  &:before {
+    content: '·';
+    font-size: 80px;
+    vertical-align: middle;
+    line-height: 20px;
+  }
+`
+const LegendUl = styled.div`
+  display: flex;
+`
+
 export const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
@@ -44,6 +74,23 @@ export const CustomTooltip = ({ active, payload }) => {
   }
 
   return null
+}
+
+const renderLegend = (props) => {
+  const { payload } = props
+  return (
+    <LegendDiv>
+      <LegendTitle>Activité quotidienne</LegendTitle>
+      <LegendUl>
+        {payload.map((entry, index) => (
+          <LegendLi key={`item-${index}`} style={index === 1 ? { color: '#E60000' } : {}}>
+            {' '}
+            {entry.value}
+          </LegendLi>
+        ))}
+      </LegendUl>
+    </LegendDiv>
+  )
 }
 
 export default class Example extends PureComponent {
@@ -89,7 +136,14 @@ export default class Example extends PureComponent {
             type="number"
           />
           <Tooltip content={<CustomTooltip />} wrapperStyle={{ outline: 0 }} />
-          <Legend iconType="circle" iconSize={8} height={80} align="right" verticalAlign="top" />
+          <Legend
+            iconType="circle"
+            iconSize={10}
+            height={80}
+            align="right"
+            verticalAlign="top"
+            content={renderLegend}
+          />
           <Bar name="Poids (kg)" dataKey="kilogram" fill="#282D30" radius={[10, 10, 0, 0]} />
           <Bar
             name="Calories brûlées (kCal)"
