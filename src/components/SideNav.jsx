@@ -14,6 +14,7 @@ const StyledNav = styled.nav`
   width: 100px;
   justify-content: center;
   align-items: center;
+  position: relative;
 `
 
 const StyledLogo = styled.img`
@@ -31,6 +32,14 @@ const StyledGroupLogo = styled.div`
   gap: 30px;
 `
 
+const StyledSmall = styled.small`
+  color: white;
+  transform: rotate(-90deg);
+  width: 150px;
+  position: absolute;
+  bottom: 120px;
+`
+
 function SideNav() {
   return (
     <StyledNav>
@@ -40,6 +49,7 @@ function SideNav() {
         <StyledLogo src={logoBike} alt="Bike" />
         <StyledLogo src={logoGym} alt="Gym" />
       </StyledGroupLogo>
+      <StyledSmall>Copyright, SportSee 2023</StyledSmall>
     </StyledNav>
   )
 }
