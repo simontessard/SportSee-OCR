@@ -5,9 +5,10 @@ import Title from '../components/Title'
 import StatsCardList from '../components/StatsCardList'
 import BarChart from '../components/BarChart'
 import LineChart from '../components/LineChart'
+import RadarChart from '../components/RadarChart'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { fetchUserInfo, fetchUserActivity, fetchUserAverage } from '../api'
+import { fetchUserInfo, fetchUserActivity, fetchUserAverage, fetchUsePerformance } from '../api'
 import { Navigate } from 'react-router-dom'
 
 const ContentDiv = styled.div`
@@ -38,18 +39,20 @@ function Home() {
   const [userData, setUserData] = useState([])
   const [userActivity, setUserActivity] = useState([])
   const [userAverage, setUserAverage] = useState([])
-
+  const [userPerformance, setUserPerformance] = useState([])
   useEffect(() => {
     const fetchData = async () => {
-      const [userData, userActivity, userAverage] = await Promise.all([
+      const [userData, userActivity, userAverage, userPerformance] = await Promise.all([
         fetchUserInfo(id),
         fetchUserActivity(id),
         fetchUserAverage(id),
+        fetchUsePerformance(id),
       ])
 
       setUserData(userData)
       setUserActivity(userActivity)
       setUserAverage(userAverage)
+      setUserPerformance(userPerformance)
     }
     fetchData()
   }, [id])
@@ -73,6 +76,7 @@ function Home() {
                 )}
                 <ContentDiv>
                   <LineChart data={userAverage.sessions} />
+                  <RadarChart data={userPerformance.data} />
                 </ContentDiv>
               </DataDiv2>
               <StatsCardList data={userData.keyData ?? []} />
