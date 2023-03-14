@@ -6,6 +6,7 @@ import StatsCardList from '../components/StatsCardList'
 import BarChart from '../components/BarChart'
 import LineChart from '../components/LineChart'
 import RadarChartPerformance from '../components/RadarChart'
+import PieChart from '../components/PieChart'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchUserInfo, fetchUserActivity, fetchUserAverage, fetchUsePerformance } from '../api'
@@ -61,6 +62,14 @@ function Home() {
     return <Navigate to="/error" replace={true} />
   }
 
+  // Format score
+  const dataScore = [
+    { id: '1', name: 'L1', value: 0 },
+    { id: '2', name: 'L2', value: 0 },
+  ]
+  dataScore[0].value = userData.score * 100
+  dataScore[1].value = 100 - dataScore[0].value
+
   return (
     <div>
       <Header />
@@ -77,6 +86,7 @@ function Home() {
                 <ContentDiv>
                   <LineChart data={userAverage.sessions} />
                   <RadarChartPerformance data={userPerformance.data} />
+                  <PieChart data={dataScore} />
                 </ContentDiv>
               </DataDiv2>
               <StatsCardList data={userData.keyData ?? []} />
