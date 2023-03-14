@@ -9,7 +9,13 @@ import RadarChartPerformance from '../components/RadarChart'
 import PieChart from '../components/PieChart'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { fetchUserInfo, fetchUserActivity, fetchUserAverage, fetchUsePerformance } from '../api'
+import {
+  fetchUserInfo,
+  fetchUserActivity,
+  fetchUserAverage,
+  fetchUserPerformance,
+  fetchUserScore,
+} from '../api'
 import { Navigate } from 'react-router-dom'
 
 const ContentDiv = styled.div`
@@ -41,19 +47,23 @@ function Home() {
   const [userActivity, setUserActivity] = useState([])
   const [userAverage, setUserAverage] = useState([])
   const [userPerformance, setUserPerformance] = useState([])
+  const [userScore, setUserScore] = useState([])
+
   useEffect(() => {
     const fetchData = async () => {
-      const [userData, userActivity, userAverage, userPerformance] = await Promise.all([
+      const [userData, userActivity, userAverage, userPerformance, userScore] = await Promise.all([
         fetchUserInfo(id),
         fetchUserActivity(id),
         fetchUserAverage(id),
-        fetchUsePerformance(id),
+        fetchUserPerformance(id),
+        fetchUserScore(id),
       ])
 
       setUserData(userData)
       setUserActivity(userActivity)
       setUserAverage(userAverage)
       setUserPerformance(userPerformance)
+      setUserScore(userScore)
     }
     fetchData()
   }, [id])
@@ -61,14 +71,6 @@ function Home() {
   if (userData === undefined) {
     return <Navigate to="/error" replace={true} />
   }
-
-  // Format score
-  const dataScore = [
-    { id: '1', name: 'L1', value: 0 },
-    { id: '2', name: 'L2', value: 0 },
-  ]
-  dataScore[0].value = userData.score * 100
-  dataScore[1].value = 100 - dataScore[0].value
 
   return (
     <div>
@@ -86,7 +88,7 @@ function Home() {
                 <ContentDiv>
                   <LineChart data={userAverage.sessions} />
                   <RadarChartPerformance data={userPerformance.data} />
-                  <PieChart data={dataScore} />
+                  <PieChart data={userScore} />
                 </ContentDiv>
               </DataDiv2>
               <StatsCardList data={userData.keyData ?? []} />

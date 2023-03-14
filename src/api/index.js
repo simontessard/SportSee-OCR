@@ -39,7 +39,7 @@ export const fetchUserAverage = async (id) => {
   }
 
 // Fonction pour récupérer les performances d'un utilisateur
-export const fetchUsePerformance = async (id) => {
+export const fetchUserPerformance = async (id) => {
     try {
       const response = await fetch(urlAPI + id + '/performance')
       const data = await response.json()
@@ -49,3 +49,28 @@ export const fetchUsePerformance = async (id) => {
       throw new Error('Une erreur est survenue lors de la récupération de la moyenne des sessions activités utilisateur')
     }
   }
+
+// Fonction pour récupérer les informations d'un utilisateur
+export const fetchUserScore = async (id) => {
+  try {
+    const response = await fetch(urlAPI + id)
+    const data = await response.json()
+    // Format score
+    const userScore = [
+    { id: '1', name: 'L1', value: 0 },
+    { id: '2', name: 'L2', value: 0 },
+    ]
+    if (data.data.score) {
+      userScore[0].value = data.data.score * 100
+      userScore[1].value = 100 - userScore[0].value
+    }
+    else {
+      userScore[0].value = data.data.todayScore * 100
+      userScore[1].value = 100 - userScore[0].value
+    }
+    return userScore
+  } catch (error) {
+    console.error(error)
+    throw new Error('Une erreur est survenue lors de la récupération des informations utilisateur')
+  }
+}
