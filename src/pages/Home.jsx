@@ -5,7 +5,7 @@ import Title from '../components/Title'
 import StatsCardList from '../components/StatsCardList'
 import BarChart from '../components/BarChart'
 import LineChart from '../components/LineChart'
-import RadarChart from '../components/RadarChart'
+import RadarChartPerformance from '../components/RadarChart'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchUserInfo, fetchUserActivity, fetchUserAverage, fetchUsePerformance } from '../api'
@@ -76,7 +76,7 @@ function Home() {
                 )}
                 <ContentDiv>
                   <LineChart data={userAverage.sessions} />
-                  <RadarChart data={userPerformance.data} />
+                  <RadarChartPerformance data={userPerformance.data} />
                 </ContentDiv>
               </DataDiv2>
               <StatsCardList data={userData.keyData ?? []} />
