@@ -61,12 +61,12 @@ export const fetchUserScore = async (id) => {
     { id: '2', name: 'L2', value: 0 },
     ]
     if (data.data.score) {
-      userScore[0].value = data.data.score * 100
-      userScore[1].value = 100 - userScore[0].value
+      userScore[1].value = data.data.score * 100
+      userScore[0].value = 100 - userScore[0].value
     }
     else {
-      userScore[0].value = data.data.todayScore * 100
-      userScore[1].value = 100 - userScore[0].value
+      userScore[1].value = data.data.todayScore * 100
+      userScore[0].value = 100 - userScore[0].value
     }
     return userScore
   } catch (error) {

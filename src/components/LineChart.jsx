@@ -54,7 +54,7 @@ export default class Example extends PureComponent {
   }
   render() {
     return (
-      <StyledResponsiveContainer width="33%" height={200}>
+      <StyledResponsiveContainer width="33%" height={250}>
         <LineChart
           data={this.state.data}
           margin={{

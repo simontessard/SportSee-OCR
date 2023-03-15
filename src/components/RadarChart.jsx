@@ -10,11 +10,11 @@ const StyledResponsiveContainer = styled(ResponsiveContainer)`
 
 function RadarChartPerformance(data) {
   return (
-    <StyledResponsiveContainer width="33%" height={200}>
+    <StyledResponsiveContainer width="33%" height={250}>
       <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data.data}>
         <PolarGrid radialLines={false} />
         <PolarAngleAxis dataKey="kind" tick={{ fill: '#FFFFFF' }} />
-        <Radar name="Mike" dataKey="value" fill="red" fillOpacity={0.7} />
+        <Radar name="Mike" dataKey="value" fill="red" fillOpacity={0.5} />
       </RadarChart>
     </StyledResponsiveContainer>
   )
