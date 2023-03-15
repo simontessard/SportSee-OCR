@@ -31,7 +31,23 @@ export const fetchUserAverage = async (id) => {
     try {
       const response = await fetch(urlAPI + id + '/average-sessions')
       const data = await response.json()
-      return data.data.sessions
+
+      const dayLetters = {
+        1: 'L',
+        2: 'M',
+        3: 'M',
+        4: 'J',
+        5: 'V',
+        6: 'S',
+        7: 'D',
+      }
+      const formattedPerformance = (data) => {
+        return data.sessions.map((d) => ({
+          ...d,
+          day: dayLetters[d.day],
+        }))
+      }
+      return formattedPerformance(data.data)
     } catch (error) {
       console.error(error)
       throw new Error('Une erreur est survenue lors de la récupération de la moyenne des sessions activités utilisateur')
