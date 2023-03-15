@@ -9,6 +9,11 @@ const StyledResponsiveContainer = styled(ResponsiveContainer)`
   border-radius: 5px;
 `
 
+const userScore = [
+  { id: '1', name: 'L1', value: 88 },
+  { id: '2', name: 'L2', value: 12 },
+]
+
 export default class Example extends PureComponent {
   constructor(props) {
     super(props)
@@ -26,7 +31,7 @@ export default class Example extends PureComponent {
             Score
           </text>
           <Pie
-            data={this.state.data}
+            data={userScore}
             dataKey="value"
             innerRadius="80%"
             outerRadius="100%"
