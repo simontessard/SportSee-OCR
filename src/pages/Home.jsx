@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Title from '../components/Title'
 import StatsCardList from '../components/StatsCardList'
 import BarChart from '../components/BarChart'
-import LineChart from '../components/LineChart'
+import LineChartAverage from '../components/LineChart'
 import RadarChartPerformance from '../components/RadarChart'
 import RadialBarChart from '../components/RadialBarChart'
 import React, { useState, useEffect } from 'react'
@@ -88,7 +88,7 @@ function Home() {
                   <BarChart data={userActivity.sessions} />
                 )}
                 <ContentDiv>
-                  <LineChart data={userAverage} />
+                  <LineChartAverage data={userAverage} />
                   <RadarChartPerformance data={userPerformance} />
                   <RadialBarChart data={userScore} />
                 </ContentDiv>

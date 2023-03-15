@@ -44,32 +44,31 @@ export const renderLegend = () => {
   return <StyledUl>Durée moyenne des sessions</StyledUl>
 }
 
-export default class Example extends PureComponent {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      data: props.data,
-    }
-  }
-  render() {
-    return (
-      <StyledResponsiveContainer width="33%" height={250}>
-        <LineChart
-          data={this.state.data}
-          margin={{
-            top: 5,
-            right: 15,
-            left: 15,
-            bottom: 5,
-          }}
-        >
-          <XAxis dataKey="day" tickLine={false} axisLine={false} tick={{ fill: '#FFFFFF' }} />
-          <Tooltip content={<CustomTooltip />} wrapperStyle={{ outline: 0 }} cursor={false} />
-          <Legend align="left" verticalAlign="top" content={renderLegend} />
-          <Line type="monotone" dataKey="sessionLength" stroke="#FFF" dot={false} strokeWidth={3} />
-        </LineChart>
-      </StyledResponsiveContainer>
-    )
-  }
+function LineChartAverage(data) {
+  return (
+    <StyledResponsiveContainer width="33%" height={250}>
+      <LineChart
+        data={data.data}
+        margin={{
+          top: 5,
+          right: 15,
+          left: 15,
+          bottom: 20,
+        }}
+      >
+        <XAxis
+          dataKey="day"
+          tickLine={false}
+          axisLine={false}
+          tick={{ fill: '#FFFFFF' }}
+          tickMargin={20}
+        />
+        <Tooltip content={<CustomTooltip />} wrapperStyle={{ outline: 0 }} cursor={false} />
+        <Legend align="left" verticalAlign="top" content={renderLegend} />
+        <Line type="monotone" dataKey="sessionLength" stroke="#FFF" dot={false} strokeWidth={3} />
+      </LineChart>
+    </StyledResponsiveContainer>
+  )
 }
+
+export default LineChartAverage
