@@ -44,6 +44,7 @@ function Home() {
   const { id } = useParams()
 
   const [userData, setUserData] = useState([])
+  const [userName, setUserName] = useState([])
   const [userActivity, setUserActivity] = useState([])
   const [userAverage, setUserAverage] = useState([])
   const [userPerformance, setUserPerformance] = useState([])
@@ -60,6 +61,7 @@ function Home() {
       ])
 
       setUserData(userData)
+      setUserName(userData.userInfos.firstName)
       setUserActivity(userActivity)
       setUserAverage(userAverage)
       setUserPerformance(userPerformance)
@@ -79,7 +81,7 @@ function Home() {
         <SideNav />
         {userData && (
           <DataDiv>
-            {userData && userData.userInfos && <Title name={userData.userInfos.firstName} />}
+            <Title name={userName} />
             <ContentDiv>
               <DataDiv2>
                 {userActivity && userActivity.sessions && userActivity.sessions.length > 0 && (
