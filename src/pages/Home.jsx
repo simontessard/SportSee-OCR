@@ -6,7 +6,7 @@ import StatsCardList from '../components/StatsCardList'
 import BarChart from '../components/BarChart'
 import LineChart from '../components/LineChart'
 import RadarChartPerformance from '../components/RadarChart'
-import PieChart from '../components/PieChart'
+import RadialBarChart from '../components/RadialBarChart'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import {
@@ -88,7 +88,7 @@ function Home() {
                 <ContentDiv>
                   <LineChart data={userAverage.sessions} />
                   <RadarChartPerformance data={userPerformance.data} />
-                  <PieChart data={userScore} />
+                  <RadialBarChart data={userScore} />
                 </ContentDiv>
               </DataDiv2>
               <StatsCardList data={userData.keyData ?? []} />
