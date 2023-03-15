@@ -43,7 +43,22 @@ export const fetchUserPerformance = async (id) => {
     try {
       const response = await fetch(urlAPI + id + '/performance')
       const data = await response.json()
-      return data.data
+
+      const kindNames = {
+        1: 'Cardio',
+        2: 'Energie',
+        3: 'Endurance',
+        4: 'Force',
+        5: 'Vitesse',
+        6: 'Intensité',
+      }
+      const formattedPerformance = (data) => {
+        return data.data.map((d) => ({
+          ...d,
+          kind: kindNames[d.kind],
+        }))
+      }
+      return formattedPerformance(data.data)
     } catch (error) {
       console.error(error)
       throw new Error('Une erreur est survenue lors de la récupération de la moyenne des sessions activités utilisateur')

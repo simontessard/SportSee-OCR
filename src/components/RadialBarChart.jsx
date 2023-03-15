@@ -33,16 +33,27 @@ export default class Example extends PureComponent {
           barSize={15}
           data={userScore}
         >
-          <RadialBar minAngle={15} background clockWise dataKey="value" />
+          <RadialBar minAngle={15} background clockWise dataKey="value" cornerRadius={15} />
           <text
             x={'50%'}
-            y={'50%'}
+            y={'45%'}
             textAnchor="middle"
             dominantBaseline="middle"
             fontSize={'26px'}
             fontWeight={700}
           >
             {userScore[0].value}%
+          </text>
+          <text
+            x={'50%'}
+            y={'55%'}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fontSize={'16px'}
+            fontWeight={700}
+            fill={'#74798c'}
+          >
+            de votre objectif
           </text>
           <text x={60} y={40} textAnchor="middle" dominantBaseline="middle">
             Score
