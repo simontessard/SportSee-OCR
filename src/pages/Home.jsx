@@ -87,7 +87,7 @@ function Home() {
                 )}
                 <ContentDiv>
                   <LineChart data={userAverage} />
-                  <RadarChartPerformance data={userPerformance.data} />
+                  <RadarChartPerformance data={userPerformance} />
                   <RadialBarChart data={userScore} />
                 </ContentDiv>
               </DataDiv2>
