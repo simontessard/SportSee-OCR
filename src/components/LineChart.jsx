@@ -53,7 +53,7 @@ function LineChartAverage(data) {
           top: 5,
           right: 15,
           left: 15,
-          bottom: 20,
+          bottom: 35,
         }}
       >
         <XAxis
@@ -61,11 +61,11 @@ function LineChartAverage(data) {
           tickLine={false}
           axisLine={false}
           tick={{ fill: '#FFFFFF' }}
-          tickMargin={20}
+          tickMargin={35}
         />
         <Tooltip content={<CustomTooltip />} wrapperStyle={{ outline: 0 }} cursor={false} />
         <Legend align="left" verticalAlign="top" content={renderLegend} />
-        <Line type="monotone" dataKey="sessionLength" stroke="#FFF" dot={false} strokeWidth={3} />
+        <Line type="natural" dataKey="sessionLength" stroke="#FFF" dot={false} strokeWidth={3} />
       </LineChart>
     </StyledResponsiveContainer>
   )
