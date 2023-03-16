@@ -84,7 +84,10 @@ const renderLegend = (props) => {
       <LegendTitle>Activité quotidienne</LegendTitle>
       <LegendUl>
         {payload.map((entry, index) => (
-          <LegendLi key={`item-${index}`} style={index === 1 ? { color: '#E60000' } : {}}>
+          <LegendLi
+            key={`item-${index}`}
+            style={index === 1 ? { color: '#E60000' } : { color: '#282D30' }}
+          >
             {' '}
             {entry.value}
           </LegendLi>
