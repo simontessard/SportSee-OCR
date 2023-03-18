@@ -40,7 +40,7 @@ const DataDiv2 = styled.div`
   width: 100%;
 `
 
-function Home() {
+function Dashboard() {
   const { id } = useParams()
 
   const [userData, setUserData] = useState([])
@@ -102,4 +102,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Dashboard

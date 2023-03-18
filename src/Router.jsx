@@ -1,13 +1,13 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
-import Home from './pages/Home'
 import Error from './pages/Error'
+import Dashboard from './pages/Dashboard'
 
 const Routing = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/user/:id" element={<Home />} />
+        <Route exact path="/user/:id" element={<Dashboard />} />
         <Route path="*" element={<Error text="Erreur : Page introuvable" />} />
         <Route path="/error" element={<Error text="Erreur : utilisateur introuvable" />} />
       </Routes>
