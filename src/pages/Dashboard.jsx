@@ -16,7 +16,6 @@ import {
   fetchUserPerformance,
   fetchUserScore,
 } from '../api'
-import { Navigate } from 'react-router-dom'
 
 const ContentDiv = styled.div`
   display: flex;
@@ -69,10 +68,6 @@ function Dashboard() {
     }
     fetchData()
   }, [id])
-
-  if (userData === undefined) {
-    return <Navigate to="/error" replace={true} />
-  }
 
   return (
     <div>
