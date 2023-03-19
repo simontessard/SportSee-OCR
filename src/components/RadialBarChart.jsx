@@ -1,5 +1,5 @@
 import React from 'react'
-import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts'
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 
 import styled from 'styled-components'
 
@@ -9,32 +9,32 @@ const StyledResponsiveContainer = styled(ResponsiveContainer)`
   border-radius: 5px;
 `
 
-function RadialBarChartGoal(data) {
+function RadialBarChartGoal(score) {
+  const data = [
+    { name: 'score', value: score.score },
+    { name: 'scoreLeft', value: 100 - score.score },
+  ]
+  const COLORS = ['#FF0000', '#e8e8e8']
+
   return (
     <StyledResponsiveContainer width="33%" height={250}>
-      <RadialBarChart
-        startAngle={65}
-        cx="50%"
-        cy="50%"
-        innerRadius="70%"
-        outerRadius="90%"
-        barSize={15}
-        data={data.data}
-      >
-        <RadialBar minAngle={15} background clockWise dataKey="value" cornerRadius={15} />
+      <PieChart width={50} height={50}>
+        <text x={40} y={35} textAnchor="middle" dominantBaseline="middle">
+          Score
+        </text>
         <text
-          x={'50%'}
-          y={'45%'}
+          x={'48%'}
+          y={'48%'}
           textAnchor="middle"
           dominantBaseline="middle"
           fontSize={'26px'}
           fontWeight={700}
         >
-          88%
+          {data[0].value}%
         </text>
         <text
-          x={'50%'}
-          y={'55%'}
+          x={'48%'}
+          y={'60%'}
           textAnchor="middle"
           dominantBaseline="middle"
           fontSize={'16px'}
@@ -43,10 +43,23 @@ function RadialBarChartGoal(data) {
         >
           de votre objectif
         </text>
-        <text x={60} y={40} textAnchor="middle" dominantBaseline="middle">
-          Score
-        </text>
-      </RadialBarChart>
+        <Pie
+          data={data}
+          dataKey="value"
+          cx={170}
+          cy={130}
+          innerRadius={80}
+          fill="#8884d8"
+          startAngle={-270}
+          endAngle={90}
+          paddingAngle={0}
+          cornerRadius={5}
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+      </PieChart>
     </StyledResponsiveContainer>
   )
 }
