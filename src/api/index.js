@@ -68,16 +68,14 @@ export const fetchUserScore = async (id) => {
     const data = await response.json()
     // Format score
     const userScore = [
-    { id: '1', name: 'L1', value: 0 },
-    { id: '2', name: 'L2', value: 0 },
+    { id: '1', name: 'L1', value: 0, fill: 'red'}
     ]
+    // Handle different property name issue from api
     if (data.data.score) {
-      userScore[1].value = data.data.score * 100
-      userScore[0].value = 100 - userScore[0].value
+      userScore[0].value = data.data.score * 100
     }
     else {
-      userScore[1].value = data.data.todayScore * 100
-      userScore[0].value = 100 - userScore[0].value
+      userScore[0].value = data.data.todayScore * 100
     }
     return userScore
 }
