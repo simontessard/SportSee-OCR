@@ -6,7 +6,7 @@ import StatsCardList from '../components/StatsCardList'
 import BarChartProgression from '../components/BarChartPogression'
 import LineChartAverage from '../components/LineChart'
 import RadarChartPerformance from '../components/RadarChartPerformance'
-import RadialBarChartGoal from '../components/RadialBarChart'
+import GoalChart from '../components/GoalChart'
 import React, { useState, useEffect } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import {
@@ -95,7 +95,7 @@ function Dashboard() {
                 <ContentDiv>
                   <LineChartAverage data={userAverage} />
                   <RadarChartPerformance data={userPerformance} />
-                  <RadialBarChartGoal score={userScore} />
+                  <GoalChart score={userScore} />
                 </ContentDiv>
               </DataDiv2>
               <StatsCardList data={userData.keyData ?? []} />

@@ -10,7 +10,7 @@ const StyledResponsiveContainer = styled(ResponsiveContainer)`
   border-radius: 5px;
 `
 
-function RadialBarChartGoal(score) {
+function GoalChart(score) {
   const data = [
     { name: 'score', value: score.score },
     { name: 'scoreLeft', value: 100 - score.score },
@@ -65,12 +65,12 @@ function RadialBarChartGoal(score) {
   )
 }
 
-RadialBarChartGoal.defaultProps = {
+GoalChart.defaultProps = {
   score: 50,
 }
 
-RadialBarChartGoal.propTypes = {
+GoalChart.propTypes = {
   score: PropTypes.number,
 }
 
-export default RadialBarChartGoal
+export default GoalChart
