@@ -44,6 +44,7 @@ export const fetchUserPerformance = async (id) => {
       const response = await fetch(urlAPI + id + '/performance')
       const data = await response.json()
 
+      // Format response to replace number by name
       const kindNames = {
         1: 'Cardio',
         2: 'Energie',
