@@ -47,7 +47,7 @@ function Dashboard() {
   const [userActivity, setUserActivity] = useState([])
   const [userAverage, setUserAverage] = useState([])
   const [userPerformance, setUserPerformance] = useState([])
-  const [userScore, setUserScore] = useState([])
+  const [userScore, setUserScore] = useState(0)
   const [Error, setError] = useState(false)
 
   useEffect(() => {
