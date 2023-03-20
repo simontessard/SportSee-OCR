@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const StyledH1 = styled.h1`
   font-weight: 500;
@@ -21,12 +22,17 @@ function Title(props) {
       <StyledH1>
         Bonjour <StyledName>{props.name}</StyledName>
       </StyledH1>
-      <StyledP>
-        {' '}
-        Félicitation ! Vous avez explosé vos objectifs hier 👏{' '}
-      </StyledP>
+      <StyledP> Félicitation ! Vous avez explosé vos objectifs hier 👏 </StyledP>
     </div>
   )
+}
+
+Title.defaultProps = {
+  name: 'Utilisateur',
+}
+
+Title.propTypes = {
+  name: PropTypes.string,
 }
 
 export default Title
