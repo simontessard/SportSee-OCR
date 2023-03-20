@@ -24,7 +24,7 @@ const ContentDiv = styled.div`
   max-width: 1200px;
 `
 
-const DataDiv = styled.div`
+const DataContainer = styled.div`
   margin-left: 50px;
   margin-top: 50px;
   display: flex;
@@ -32,7 +32,7 @@ const DataDiv = styled.div`
   gap: 50px;
 `
 
-const DataDiv2 = styled.div`
+const ChartContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -87,20 +87,20 @@ function Dashboard() {
       <ContentDiv>
         <SideNav />
         {userData && (
-          <DataDiv>
+          <DataContainer>
             <Title name={userName} />
             <ContentDiv>
-              <DataDiv2>
+              <ChartContainer>
                 <BarChartProgression data={userActivity} />
                 <ContentDiv>
                   <LineChartAverage data={userAverage} />
                   <RadarChartPerformance data={userPerformance} />
                   <GoalChart score={userScore} />
                 </ContentDiv>
-              </DataDiv2>
+              </ChartContainer>
               <StatsCardList data={userData.keyData ?? []} />
             </ContentDiv>
-          </DataDiv>
+          </DataContainer>
         )}
       </ContentDiv>
     </div>
