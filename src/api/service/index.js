@@ -7,7 +7,6 @@ export const fetchUserInfo = async (id) => {
     const response = await fetch(urlAPI + id)
     const data = await response.json()
     return data.data
-    
   }
 
 // Fonction pour récupérer les sessions d'activité d'un utilisateur
