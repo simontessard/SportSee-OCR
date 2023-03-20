@@ -15,7 +15,7 @@ import {
   fetchUserAverage,
   fetchUserPerformance,
   fetchUserScore,
-} from '../api'
+} from '../api/service'
 
 const ContentDiv = styled.div`
   display: flex;
