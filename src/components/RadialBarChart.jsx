@@ -2,6 +2,7 @@ import React from 'react'
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const StyledResponsiveContainer = styled(ResponsiveContainer)`
   background: #fbfbfb;
@@ -62,6 +63,14 @@ function RadialBarChartGoal(score) {
       </PieChart>
     </StyledResponsiveContainer>
   )
+}
+
+RadialBarChartGoal.defaultProps = {
+  score: 50,
+}
+
+RadialBarChartGoal.propTypes = {
+  score: PropTypes.number,
 }
 
 export default RadialBarChartGoal
