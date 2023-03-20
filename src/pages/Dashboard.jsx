@@ -3,7 +3,7 @@ import SideNav from '../components/SideNav'
 import styled from 'styled-components'
 import Title from '../components/Title'
 import StatsCardList from '../components/StatsCardList'
-import BarChart from '../components/BarChart'
+import BarChartProgression from '../components/BarChartPogression'
 import LineChartAverage from '../components/LineChart'
 import RadarChartPerformance from '../components/RadarChartPerformance'
 import RadialBarChartGoal from '../components/RadialBarChart'
@@ -91,9 +91,7 @@ function Dashboard() {
             <Title name={userName} />
             <ContentDiv>
               <DataDiv2>
-                {userActivity && userActivity.sessions && userActivity.sessions.length > 0 && (
-                  <BarChart data={userActivity.sessions} />
-                )}
+                <BarChartProgression data={userActivity.sessions} />
                 <ContentDiv>
                   <LineChartAverage data={userAverage} />
                   <RadarChartPerformance data={userPerformance} />

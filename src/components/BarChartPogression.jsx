@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import {
   BarChart,
   Bar,
@@ -97,66 +97,58 @@ const renderLegend = (props) => {
   )
 }
 
-export default class Example extends PureComponent {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      data: props.data,
-    }
-  }
-
-  render() {
-    return (
-      <StyledResponsiveContainer width="95%" height={250}>
-        <BarChart
-          data={this.state.data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
+function BarChartProgression(data) {
+  return (
+    <StyledResponsiveContainer width="95%" height={250}>
+      <BarChart
+        data={data.data}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+        barGap={8}
+        barSize={7}
+      >
+        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+        <XAxis
+          tickLine={false}
+          tickMargin={15}
+          dataKey="day"
+          tick={{
+            fontSize: 14,
           }}
-          barGap={8}
-          barSize={7}
-        >
-          <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis
-            tickLine={false}
-            tickMargin={15}
-            dataKey="day"
-            tick={{
-              fontSize: 14,
-            }}
-          />
-          <YAxis
-            tick={{
-              fontSize: 14,
-            }}
-            tickLine={false}
-            tickMargin={30}
-            orientation="right"
-            tickCount={3}
-            type="number"
-          />
-          <Tooltip content={<CustomTooltip />} wrapperStyle={{ outline: 0 }} />
-          <Legend
-            iconType="circle"
-            iconSize={10}
-            height={80}
-            align="right"
-            verticalAlign="top"
-            content={renderLegend}
-          />
-          <Bar name="Poids (kg)" dataKey="kilogram" fill="#282D30" radius={[10, 10, 0, 0]} />
-          <Bar
-            name="Calories brûlées (kCal)"
-            dataKey="calories"
-            fill="#E60000"
-            radius={[10, 10, 0, 0]}
-          />
-        </BarChart>
-      </StyledResponsiveContainer>
-    )
-  }
+        />
+        <YAxis
+          tick={{
+            fontSize: 14,
+          }}
+          tickLine={false}
+          tickMargin={30}
+          orientation="right"
+          tickCount={3}
+          type="number"
+        />
+        <Tooltip content={<CustomTooltip />} wrapperStyle={{ outline: 0 }} />
+        <Legend
+          iconType="circle"
+          iconSize={10}
+          height={80}
+          align="right"
+          verticalAlign="top"
+          content={renderLegend}
+        />
+        <Bar name="Poids (kg)" dataKey="kilogram" fill="#282D30" radius={[10, 10, 0, 0]} />
+        <Bar
+          name="Calories brûlées (kCal)"
+          dataKey="calories"
+          fill="#E60000"
+          radius={[10, 10, 0, 0]}
+        />
+      </BarChart>
+    </StyledResponsiveContainer>
+  )
 }
+
+export default BarChartProgression
