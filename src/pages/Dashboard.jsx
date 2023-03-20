@@ -91,7 +91,7 @@ function Dashboard() {
             <Title name={userName} />
             <ContentDiv>
               <DataDiv2>
-                <BarChartProgression data={userActivity.sessions} />
+                <BarChartProgression data={userActivity} />
                 <ContentDiv>
                   <LineChartAverage data={userAverage} />
                   <RadarChartPerformance data={userPerformance} />

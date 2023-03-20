@@ -98,10 +98,11 @@ const renderLegend = (props) => {
 }
 
 function BarChartProgression(data) {
+  const formattedData = data.data.sessions
   return (
     <StyledResponsiveContainer width="95%" height={250}>
       <BarChart
-        data={data.data}
+        data={formattedData}
         margin={{
           top: 5,
           right: 30,
