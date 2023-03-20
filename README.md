@@ -1,8 +1,19 @@
 # How to run this React Project
 
+## Prerequisites
+
+- NodeJS
+- Yarn
+
 ## 1. Download the API (Back-end)
 
-In the project directory, run:
+Clone [Sportsee-Back](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard).
+
+In the project directory, install the dependencies :
+
+### `yarn`
+
+In the project directory, run the micro API with :
 
 ### `yarn dev`
 
