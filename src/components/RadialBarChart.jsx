@@ -18,14 +18,14 @@ function RadialBarChartGoal(score) {
   const COLORS = ['#FF0000', '#e8e8e8']
 
   return (
-    <StyledResponsiveContainer width="33%" height={250}>
-      <PieChart width={50} height={50}>
+    <StyledResponsiveContainer width="30%" height={250}>
+      <PieChart>
         <text x={40} y={35} textAnchor="middle" dominantBaseline="middle">
           Score
         </text>
         <text
-          x={'48%'}
-          y={'48%'}
+          x={175}
+          y={130}
           textAnchor="middle"
           dominantBaseline="middle"
           fontSize={'26px'}
@@ -34,8 +34,8 @@ function RadialBarChartGoal(score) {
           {data[0].value}%
         </text>
         <text
-          x={'48%'}
-          y={'60%'}
+          x={175}
+          y={155}
           textAnchor="middle"
           dominantBaseline="middle"
           fontSize={'16px'}
