@@ -21,6 +21,7 @@ export const fetchUserAverage = async (id) => {
       const response = await fetch(urlAPI + id + '/average-sessions')
       const data = await response.json()
 
+      // Format response to replace number by letter of the week
       const dayLetters = {
         1: 'L',
         2: 'M',
