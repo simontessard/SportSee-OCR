@@ -12,12 +12,13 @@ const CardsContainer = styled.div`
 `
 
 function StatsCardList(data) {
+  data = data.data
   return (
     <CardsContainer>
-      <StatsCard count={data.data.calorieCount} type="calories" image={caloriesLogo} />
-      <StatsCard count={data.data.proteinCount} type="proteines" image={chickenLogo} />
-      <StatsCard count={data.data.carbohydrateCount} type="glucides" image={appleLogo} />
-      <StatsCard count={data.data.lipidCount} type="lipides" image={cheeseburgerLogo} />
+      <StatsCard count={data.calorieCount} type="calories" image={caloriesLogo} />
+      <StatsCard count={data.proteinCount} type="proteines" image={chickenLogo} />
+      <StatsCard count={data.carbohydrateCount} type="glucides" image={appleLogo} />
+      <StatsCard count={data.lipidCount} type="lipides" image={cheeseburgerLogo} />
     </CardsContainer>
   )
 }
