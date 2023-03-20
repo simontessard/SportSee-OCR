@@ -43,7 +43,7 @@ function Dashboard() {
   const { id } = useParams()
 
   const [userData, setUserData] = useState([])
-  const [userName, setUserName] = useState([])
+  const [userName, setUserName] = useState('')
   const [userActivity, setUserActivity] = useState([])
   const [userAverage, setUserAverage] = useState([])
   const [userPerformance, setUserPerformance] = useState([])
