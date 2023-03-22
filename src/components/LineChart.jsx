@@ -1,4 +1,3 @@
-import React from 'react'
 import { LineChart, Line, XAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import styled from 'styled-components'
 
