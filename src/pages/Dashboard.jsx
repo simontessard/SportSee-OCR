@@ -102,7 +102,12 @@ function Dashboard() {
         }
         setUserPerformance(formattedPerformance(userPerformance))
 
-        setUserScore(userScore)
+        // Handle different property name issue from api
+        if (userScore.score) {
+          setUserScore(userScore.score * 100)
+        } else {
+          setUserScore(userScore.todayScore * 100)
+        }
       } catch (error) {
         console.error('Une erreur est survenue:', error)
         setError(true)
