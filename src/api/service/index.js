@@ -1,22 +1,22 @@
-// URL de l'API
+// Host and API adress
 const host = 'http://localhost:3000'
 const urlAPI = host + '/user/'
 
-// Fonction pour récupérer les informations d'un utilisateur
+// Get personnal information about the user
 export const fetchUserInfo = async (id) => {
     const response = await fetch(urlAPI + id)
     const data = await response.json()
     return data.data
   }
 
-// Fonction pour récupérer les sessions d'activité d'un utilisateur
+// Get information of user's activities
 export const fetchUserActivity = async (id) => {
     const response = await fetch(urlAPI + id + '/activity')
     const data = await response.json()
     return data.data
   }
 
-// Fonction pour récupérer la moyenne des sessions d'activité d'un utilisateur
+// Get information of user's sessions activities
 export const fetchUserSessions = async (id) => {
       const response = await fetch(urlAPI + id + '/average-sessions')
       const data = await response.json()
@@ -40,7 +40,7 @@ export const fetchUserSessions = async (id) => {
       return formattedSessions(data.data)
   }
 
-// Fonction pour récupérer les performances d'un utilisateur
+// Get information of user's performance
 export const fetchUserPerformance = async (id) => {
       const response = await fetch(urlAPI + id + '/performance')
       const data = await response.json()
@@ -63,7 +63,7 @@ export const fetchUserPerformance = async (id) => {
       return formattedPerformance(data.data)
   }
 
-// Fonction pour récupérer les informations d'un utilisateur
+// Get information of user's score
 export const fetchUserScore = async (id) => {
     const response = await fetch(urlAPI + id)
     const data = await response.json()
