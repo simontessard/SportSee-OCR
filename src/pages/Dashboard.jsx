@@ -12,7 +12,7 @@ import { Navigate, useParams } from 'react-router-dom'
 import {
   fetchUserInfo,
   fetchUserActivity,
-  fetchUserAverage,
+  fetchUserSessions,
   fetchUserPerformance,
   fetchUserScore,
 } from '../api/service'
@@ -45,7 +45,7 @@ function Dashboard() {
   const [userData, setUserData] = useState([])
   const [userName, setUserName] = useState('')
   const [userActivity, setUserActivity] = useState([])
-  const [userAverage, setUserAverage] = useState([])
+  const [userSessions, setUserSessions] = useState([])
   const [userPerformance, setUserPerformance] = useState([])
   const [userScore, setUserScore] = useState(0)
   const [Error, setError] = useState(false)
@@ -53,20 +53,19 @@ function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [userData, userActivity, userAverage, userPerformance, userScore] = await Promise.all(
-          [
+        const [userData, userActivity, userSessions, userPerformance, userScore] =
+          await Promise.all([
             fetchUserInfo(id),
             fetchUserActivity(id),
-            fetchUserAverage(id),
+            fetchUserSessions(id),
             fetchUserPerformance(id),
             fetchUserScore(id),
-          ]
-        )
+          ])
 
         setUserData(userData)
         setUserName(userData.userInfos.firstName)
         setUserActivity(userActivity)
-        setUserAverage(userAverage)
+        setUserSessions(userSessions)
         setUserPerformance(userPerformance)
         setUserScore(userScore)
       } catch (error) {
@@ -93,7 +92,7 @@ function Dashboard() {
               <ChartContainer>
                 <BarChartProgression data={userActivity} />
                 <ContentDiv>
-                  <LineChartAverage data={userAverage} />
+                  <LineChartAverage data={userSessions} />
                   <RadarChartPerformance data={userPerformance} />
                   <GoalChart score={userScore} />
                 </ContentDiv>

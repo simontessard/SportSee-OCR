@@ -17,7 +17,7 @@ export const fetchUserActivity = async (id) => {
   }
 
 // Fonction pour récupérer la moyenne des sessions d'activité d'un utilisateur
-export const fetchUserAverage = async (id) => {
+export const fetchUserSessions = async (id) => {
       const response = await fetch(urlAPI + id + '/average-sessions')
       const data = await response.json()
 
@@ -31,13 +31,13 @@ export const fetchUserAverage = async (id) => {
         6: 'S',
         7: 'D',
       }
-      const formattedPerformance = (data) => {
+      const formattedSessions = (data) => {
         return data.sessions.map((d) => ({
           ...d,
           day: dayLetters[d.day],
         }))
       }
-      return formattedPerformance(data.data)
+      return formattedSessions(data.data)
   }
 
 // Fonction pour récupérer les performances d'un utilisateur
