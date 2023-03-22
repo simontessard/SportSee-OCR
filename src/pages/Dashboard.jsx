@@ -40,6 +40,7 @@ const ChartContainer = styled.div`
 `
 
 function Dashboard() {
+  // Get the id of the user in the URL
   const { id } = useParams()
 
   const [userData, setUserData] = useState([])
@@ -61,7 +62,7 @@ function Dashboard() {
             fetchUserPerformance(id),
             fetchUserScore(id),
           ])
-
+        // Define data to all variables
         setUserData(userData)
         setUserName(userData.userInfos.firstName)
         setUserActivity(userActivity)
@@ -76,6 +77,7 @@ function Dashboard() {
     fetchData()
   }, [id])
 
+  // In case the id given is wrong, error page is displayed
   if (Error) {
     return <Navigate to="/error" replace={true} />
   }
