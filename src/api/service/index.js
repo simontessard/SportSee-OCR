@@ -20,24 +20,7 @@ export const fetchUserActivity = async (id) => {
 export const fetchUserSessions = async (id) => {
       const response = await fetch(urlAPI + id + '/average-sessions')
       const data = await response.json()
-
-      // Format response to replace number by letter of the week
-      const dayLetters = {
-        1: 'L',
-        2: 'M',
-        3: 'M',
-        4: 'J',
-        5: 'V',
-        6: 'S',
-        7: 'D',
-      }
-      const formattedSessions = (data) => {
-        return data.sessions.map((d) => ({
-          ...d,
-          day: dayLetters[d.day],
-        }))
-      }
-      return formattedSessions(data.data)
+      return data.data
   }
 
 // Get information of user's performance
