@@ -44,23 +44,7 @@ export const fetchUserSessions = async (id) => {
 export const fetchUserPerformance = async (id) => {
       const response = await fetch(urlAPI + id + '/performance')
       const data = await response.json()
-
-      // Format response to replace number by name
-      const kindNames = {
-        1: 'Cardio',
-        2: 'Energie',
-        3: 'Endurance',
-        4: 'Force',
-        5: 'Vitesse',
-        6: 'Intensité',
-      }
-      const formattedPerformance = (data) => {
-        return data.data.map((d) => ({
-          ...d,
-          kind: kindNames[d.kind],
-        }))
-      }
-      return formattedPerformance(data.data)
+      return data.data
   }
 
 // Get information of user's score
