@@ -14,7 +14,6 @@ import {
   fetchUserActivity,
   fetchUserSessions,
   fetchUserPerformance,
-  fetchUserScore,
 } from '../api/service'
 
 import User from '../api/models/user.js'
