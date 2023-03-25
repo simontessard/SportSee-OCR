@@ -17,6 +17,8 @@ import {
   fetchUserScore,
 } from '../api/service'
 
+import User from '../api/models/user.js'
+
 const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -43,32 +45,30 @@ function Dashboard() {
   // Get the id of the user in the URL
   const { id } = useParams()
 
+  const user = new User()
+
   const [userData, setUserData] = useState([])
   const [userName, setUserName] = useState('')
   const [userActivity, setUserActivity] = useState([])
   const [userSessions, setUserSessions] = useState([])
   const [userPerformance, setUserPerformance] = useState([])
-  const [userScore, setUserScore] = useState(0)
   const [Error, setError] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [userData, userActivity, userSessions, userPerformance, userScore] =
-          await Promise.all([
-            fetchUserInfo(id),
-            fetchUserActivity(id),
-            fetchUserSessions(id),
-            fetchUserPerformance(id),
-            fetchUserScore(id),
-          ])
+        const [userData, userActivity, userSessions, userPerformance] = await Promise.all([
+          fetchUserInfo(id),
+          fetchUserActivity(id),
+          fetchUserSessions(id),
+          fetchUserPerformance(id),
+        ])
         // Define data to all variables
         setUserData(userData)
         setUserName(userData.userInfos.firstName)
         setUserActivity(userActivity)
         setUserSessions(userSessions)
         setUserPerformance(userPerformance)
-        setUserScore(userScore)
       } catch (error) {
         console.error('Une erreur est survenue:', error)
         setError(true)
@@ -96,7 +96,7 @@ function Dashboard() {
                 <ContentDiv>
                   <LineChartAverage data={userSessions} />
                   <RadarChartPerformance data={userPerformance} />
-                  <GoalChart score={userScore} />
+                  <GoalChart score={userData} />
                 </ContentDiv>
               </ChartContainer>
               <StatsCardList data={userData.keyData ?? []} />

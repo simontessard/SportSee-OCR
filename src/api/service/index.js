@@ -29,10 +29,3 @@ export const fetchUserPerformance = async (id) => {
       const data = await response.json()
       return data.data
   }
-
-// Get information of user's score
-export const fetchUserScore = async (id) => {
-    const response = await fetch(urlAPI + id)
-    const data = await response.json()
-    return data.data
-}
