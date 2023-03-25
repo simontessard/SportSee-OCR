@@ -67,23 +67,7 @@ function Dashboard() {
         setUserName(userData.userInfos.firstName)
         setUserActivity(userActivity)
         setUserSessions(userSessions)
-
-        // Format response to replace number by name
-        const kindNames = {
-          1: 'Cardio',
-          2: 'Energie',
-          3: 'Endurance',
-          4: 'Force',
-          5: 'Vitesse',
-          6: 'Intensité',
-        }
-        const formattedPerformance = (test) => {
-          return test.data.map((d) => ({
-            ...d,
-            kind: kindNames[d.kind],
-          }))
-        }
-        setUserPerformance(formattedPerformance(userPerformance))
+        setUserPerformance(userPerformance)
 
         // Handle different property name issue from api
         if (userScore.score) {
