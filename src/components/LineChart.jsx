@@ -44,10 +44,30 @@ export const renderLegend = () => {
 }
 
 function LineChartAverage(data) {
+  // Format response to replace number by letter of the week
+  const dayLetters = {
+    1: 'L',
+    2: 'M',
+    3: 'M',
+    4: 'J',
+    5: 'V',
+    6: 'S',
+    7: 'D',
+  }
+  const formattedSessions = (oldData) => {
+    if (oldData.sessions) {
+      return oldData.sessions.map((d) => ({
+        ...d,
+        day: dayLetters[d.day],
+      }))
+    }
+    return []
+  }
+
   return (
     <StyledResponsiveContainer width="33%" height={250}>
       <LineChart
-        data={data.data}
+        data={formattedSessions(data.data)}
         margin={{
           top: 5,
           right: 15,

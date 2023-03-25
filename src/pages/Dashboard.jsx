@@ -66,24 +66,7 @@ function Dashboard() {
         setUserData(userData)
         setUserName(userData.userInfos.firstName)
         setUserActivity(userActivity)
-
-        // Format response to replace number by letter of the week
-        const dayLetters = {
-          1: 'L',
-          2: 'M',
-          3: 'M',
-          4: 'J',
-          5: 'V',
-          6: 'S',
-          7: 'D',
-        }
-        const formattedSessions = (data) => {
-          return data.sessions.map((d) => ({
-            ...d,
-            day: dayLetters[d.day],
-          }))
-        }
-        setUserSessions(formattedSessions(userSessions))
+        setUserSessions(userSessions)
 
         // Format response to replace number by name
         const kindNames = {
