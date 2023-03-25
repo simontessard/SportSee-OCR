@@ -11,9 +11,11 @@ const StyledResponsiveContainer = styled(ResponsiveContainer)`
 `
 
 function GoalChart(score) {
+  // Handle different property name issue from api
+  let formattedScore = score.score.score * 100 || score.score.todayScore * 100
   const data = [
-    { name: 'score', value: score.score },
-    { name: 'scoreLeft', value: 100 - score.score },
+    { name: 'score', value: formattedScore },
+    { name: 'scoreLeft', value: 100 - formattedScore },
   ]
   const COLORS = ['#FF0000', '#e8e8e8']
 

@@ -68,13 +68,7 @@ function Dashboard() {
         setUserActivity(userActivity)
         setUserSessions(userSessions)
         setUserPerformance(userPerformance)
-
-        // Handle different property name issue from api
-        if (userScore.score) {
-          setUserScore(userScore.score * 100)
-        } else {
-          setUserScore(userScore.todayScore * 100)
-        }
+        setUserScore(userScore)
       } catch (error) {
         console.error('Une erreur est survenue:', error)
         setError(true)
