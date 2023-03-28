@@ -17,6 +17,7 @@ const StyledResponsiveContainer = styled(ResponsiveContainer)`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
   border-radius: 5px;
   padding: 25px;
+  max-width: 800px;
 `
 
 const StyledDiv = styled.div`

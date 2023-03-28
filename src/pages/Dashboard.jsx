@@ -21,22 +21,22 @@ import User from '../api/models/user.js'
 const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  gap: 40px;
   max-width: 1000px;
 `
 
 const DataContainer = styled.div`
-  margin-left: 50px;
-  margin-top: 50px;
+  margin-left: 10px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 40px;
 `
 
 const ChartContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 40px;
   width: 100%;
 `
 

@@ -20,27 +20,27 @@ function GoalChart(score) {
   const COLORS = ['#FF0000', '#e8e8e8']
 
   return (
-    <StyledResponsiveContainer width="30%" height={250}>
+    <StyledResponsiveContainer width="30%" height={200}>
       <PieChart>
         <text x={40} y={35} textAnchor="middle" dominantBaseline="middle">
           Score
         </text>
         <text
-          x={145}
-          y={130}
+          x={125}
+          y={100}
           textAnchor="middle"
           dominantBaseline="middle"
-          fontSize={'26px'}
+          fontSize={'24px'}
           fontWeight={700}
         >
           {data[0].value}%
         </text>
         <text
-          x={145}
-          y={155}
+          x={125}
+          y={120}
           textAnchor="middle"
           dominantBaseline="middle"
-          fontSize={'16px'}
+          fontSize={'14px'}
           fontWeight={700}
           fill={'#74798c'}
         >
@@ -49,9 +49,9 @@ function GoalChart(score) {
         <Pie
           data={data}
           dataKey="value"
-          cx={140}
-          cy={130}
-          innerRadius={80}
+          cx={120}
+          cy={100}
+          innerRadius={60}
           fill="#8884d8"
           startAngle={-270}
           endAngle={90}

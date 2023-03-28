@@ -11,7 +11,7 @@ const Card = styled.div`
   background: #fbfbfb;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
   border-radius: 5px;
-  padding: 30px;
+  padding: 22px;
 `
 
 const DataDisplay = styled.div`

@@ -65,7 +65,7 @@ function LineChartAverage(data) {
   }
 
   return (
-    <StyledResponsiveContainer width="33%" height={250}>
+    <StyledResponsiveContainer width="30%" height={200}>
       <LineChart
         data={formattedSessions(data.data)}
         margin={{
