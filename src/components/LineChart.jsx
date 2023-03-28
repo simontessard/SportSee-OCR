@@ -15,7 +15,7 @@ const StyledUl = styled.ul`
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 24px;
   color: #ffffff;
   mix-blend-mode: normal;

@@ -22,7 +22,7 @@ const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
   gap: 50px;
-  max-width: 1200px;
+  max-width: 1000px;
 `
 
 const DataContainer = styled.div`

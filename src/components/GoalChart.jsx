@@ -26,7 +26,7 @@ function GoalChart(score) {
           Score
         </text>
         <text
-          x={175}
+          x={145}
           y={130}
           textAnchor="middle"
           dominantBaseline="middle"
@@ -36,7 +36,7 @@ function GoalChart(score) {
           {data[0].value}%
         </text>
         <text
-          x={175}
+          x={145}
           y={155}
           textAnchor="middle"
           dominantBaseline="middle"
@@ -49,7 +49,7 @@ function GoalChart(score) {
         <Pie
           data={data}
           dataKey="value"
-          cx={170}
+          cx={140}
           cy={130}
           innerRadius={80}
           fill="#8884d8"
