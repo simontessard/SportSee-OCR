@@ -1,5 +1,6 @@
 import { LineChart, Line, XAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const StyledResponsiveContainer = styled(ResponsiveContainer)`
   background: #ff0000;
@@ -88,6 +89,47 @@ function LineChartAverage(data) {
       </LineChart>
     </StyledResponsiveContainer>
   )
+}
+
+LineChartAverage.defaultProps = {
+  data: {
+    data: {
+      sessions: [
+        {
+          day: 1,
+          sessionLength: 50,
+        },
+        {
+          day: 2,
+          sessionLength: 40,
+        },
+        {
+          day: 3,
+          sessionLength: 45,
+        },
+        {
+          day: 4,
+          sessionLength: 10,
+        },
+        {
+          day: 5,
+          sessionLength: 0,
+        },
+        {
+          day: 6,
+          sessionLength: 45,
+        },
+        {
+          day: 7,
+          sessionLength: 20,
+        },
+      ],
+    },
+  },
+}
+
+LineChartAverage.propTypes = {
+  data: PropTypes.array,
 }
 
 export default LineChartAverage
