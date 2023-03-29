@@ -100,7 +100,6 @@ const renderLegend = (props) => {
 }
 
 function BarChartProgression(data) {
-  console.log(data)
   const formattedData = data.data.sessions
   return (
     <StyledResponsiveContainer width="95%" height={250}>
