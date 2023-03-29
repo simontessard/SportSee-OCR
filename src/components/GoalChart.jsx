@@ -11,8 +11,7 @@ const StyledResponsiveContainer = styled(ResponsiveContainer)`
 `
 
 function GoalChart(score) {
-  // Handle different property name issue from api
-  let formattedScore = score.score.score * 100 || score.score.todayScore * 100
+  let formattedScore = score.score * 100
   const data = [
     { name: 'score', value: formattedScore },
     { name: 'scoreLeft', value: 100 - formattedScore },
@@ -68,11 +67,11 @@ function GoalChart(score) {
 }
 
 GoalChart.defaultProps = {
-  score: 50,
+  score: 0.8,
 }
 
 GoalChart.propTypes = {
-  score: PropTypes.object,
+  score: PropTypes.number,
 }
 
 export default GoalChart
