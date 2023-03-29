@@ -72,7 +72,7 @@ GoalChart.defaultProps = {
 }
 
 GoalChart.propTypes = {
-  score: PropTypes.number,
+  score: PropTypes.object,
 }
 
 export default GoalChart
