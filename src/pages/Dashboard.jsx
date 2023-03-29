@@ -48,11 +48,11 @@ function Dashboard() {
 
   const user = new User()
 
-  const [userData, setUserData] = useState([])
+  const [userData, setUserData] = useState({})
   const [userName, setUserName] = useState('')
-  const [userActivity, setUserActivity] = useState([])
-  const [userSessions, setUserSessions] = useState([])
-  const [userPerformance, setUserPerformance] = useState([])
+  const [userActivity, setUserActivity] = useState({})
+  const [userSessions, setUserSessions] = useState({})
+  const [userPerformance, setUserPerformance] = useState({})
   const [Error, setError] = useState(false)
 
   useEffect(() => {
@@ -102,7 +102,7 @@ function Dashboard() {
                   <GoalChart score={userData} />
                 </ContentDiv>
               </ChartContainer>
-              <StatsCardList data={userData.keyData ?? []} />
+              <StatsCardList data={userData.keyData} />
             </ContentDiv>
           </DataContainer>
         )}
