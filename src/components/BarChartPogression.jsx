@@ -11,6 +11,7 @@ import {
 } from 'recharts'
 
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const StyledResponsiveContainer = styled(ResponsiveContainer)`
   background: #fbfbfb;
@@ -99,6 +100,7 @@ const renderLegend = (props) => {
 }
 
 function BarChartProgression(data) {
+  console.log(data)
   const formattedData = data.data.sessions
   return (
     <StyledResponsiveContainer width="95%" height={250}>
@@ -151,6 +153,54 @@ function BarChartProgression(data) {
       </BarChart>
     </StyledResponsiveContainer>
   )
+}
+
+BarChartProgression.defaultProps = {
+  data: {
+    data: {
+      sessions: [
+        {
+          day: '2020-07-01',
+          kilogram: 70,
+          calories: 240,
+        },
+        {
+          day: '2020-07-02',
+          kilogram: 69,
+          calories: 220,
+        },
+        {
+          day: '2020-07-03',
+          kilogram: 70,
+          calories: 280,
+        },
+        {
+          day: '2020-07-04',
+          kilogram: 70,
+          calories: 500,
+        },
+        {
+          day: '2020-07-05',
+          kilogram: 69,
+          calories: 160,
+        },
+        {
+          day: '2020-07-06',
+          kilogram: 69,
+          calories: 162,
+        },
+        {
+          day: '2020-07-07',
+          kilogram: 69,
+          calories: 390,
+        },
+      ],
+    },
+  },
+}
+
+BarChartProgression.propTypes = {
+  data: PropTypes.object,
 }
 
 export default BarChartProgression
