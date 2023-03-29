@@ -27,10 +27,10 @@ function StatsCardList(data) {
 StatsCardList.defaultProps = {
   data: {
     data: {
-      calorieCount: 1930,
-      proteinCount: 155,
-      carbohydrateCount: 290,
-      lipidCount: 50,
+      calorieCount: 100,
+      proteinCount: 100,
+      carbohydrateCount: 100,
+      lipidCount: 100,
     },
   },
 }
