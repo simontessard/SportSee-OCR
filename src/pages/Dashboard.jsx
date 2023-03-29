@@ -7,7 +7,7 @@ import BarChartProgression from '../components/BarChartPogression'
 import LineChartAverage from '../components/LineChart'
 import RadarChartPerformance from '../components/RadarChartPerformance'
 import GoalChart from '../components/GoalChart'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import {
   fetchUserInfo,
@@ -44,6 +44,8 @@ function Dashboard() {
   // Get the id of the user in the URL
   const { id } = useParams()
 
+  const renderAfterCalled = useRef(true)
+
   const user = new User()
 
   const [userData, setUserData] = useState([])
@@ -54,7 +56,7 @@ function Dashboard() {
   const [Error, setError] = useState(false)
 
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchData() {
       try {
         const [userData, userActivity, userSessions, userPerformance] = await Promise.all([
           fetchUserInfo(id),
@@ -73,7 +75,9 @@ function Dashboard() {
         setError(true)
       }
     }
-    fetchData()
+    if (renderAfterCalled.current) {
+      fetchData()
+    }
   }, [id])
 
   // In case the id given is wrong, error page is displayed
