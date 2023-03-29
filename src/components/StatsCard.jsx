@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const StyledImg = styled.img`
   height: 60px;
@@ -48,6 +49,18 @@ function StatsCard({ image, type, count }) {
       </DataDisplay>
     </Card>
   )
+}
+
+StatsCard.defaultProps = {
+  image: '../assets/card/chicken.svg',
+  type: 'calories',
+  count: 50,
+}
+
+StatsCard.propTypes = {
+  image: PropTypes.string,
+  type: PropTypes.string,
+  count: PropTypes.number,
 }
 
 export default StatsCard
