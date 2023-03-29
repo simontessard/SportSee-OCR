@@ -129,7 +129,7 @@ LineChartAverage.defaultProps = {
 }
 
 LineChartAverage.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.object,
 }
 
 export default LineChartAverage
