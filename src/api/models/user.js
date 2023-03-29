@@ -1,40 +1,63 @@
 class User {
   constructor() {
-    this._user = {
-      userInfos: { firstName: '', lastName: '', age: 0 },
-      score: 0,
-      keyData: { calorieCount: 0, proteinCount: 0, carbohydrateCount: 0, lipidCount: 0 },
-      sessionsAverage: [{ day: 0, sessionLength: 0 }],
-      sessionsActivity: [{ day: '2023-01-01', kilogram: 0, calories: 0 }],
-      performances: [{ value: 0, kind: '' }],
-    }
+    this._userInfos = { firstName: '', lastName: '', age: 0 }
+    this._score = 0
+    this._keyData = { calorieCount: 0, proteinCount: 0, carbohydrateCount: 0, lipidCount: 0 }
+    this._sessionsAverage = [{ day: 0, sessionLength: 0 }]
+    this._sessionsActivity = [{ day: '2023-01-01', kilogram: 0, calories: 0 }]
+    this._performances = [{ value: 0, kind: '' }]
   }
-  userInfos(userInfos) {
-    this._user.userInfos = userInfos
-    return this
+
+  get userInfos() {
+    return this._userInfos
   }
-  userScore(score) {
-    this._user.score = score
-    return this
+
+  get score() {
+    return this._score
   }
-  keyData(keyData) {
-    this._user.keyData = keyData
-    return this
+
+  get keyData() {
+    return this._keyData
   }
-  sessionsAverage(sessionsAverage) {
-    this._user.sessionsAverage = sessionsAverage
-    return this
+
+  get sessionsAverage() {
+    return this._sessionsAverage
   }
-  sessionsActivity(sessionsActivity) {
-    this._user.sessionsActivity = sessionsActivity
-    return this
+
+  get sessionsActivity() {
+    return this._sessionsActivity
   }
-  performances(performances) {
-    this._user.performances = performances
-    return this
+
+  get performances() {
+    return this._performances
   }
+
+  set score(value) {
+    this._score = value
+  }
+
+  set userInfos(value) {
+    this._userInfos = value
+  }
+
+  set keyData(value) {
+    this._keyData = value
+  }
+
+  set sessionsAverage(value) {
+    this._sessionsAverage = value
+  }
+
+  set sessionsActivity(value) {
+    this._sessionsActivity = value
+  }
+
+  set performances(value) {
+    this._performances = value
+  }
+
   build() {
-    return this._user
+    return this
   }
 }
 
