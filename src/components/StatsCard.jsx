@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const StyledImg = styled.img`
   height: 60px;
-  width: 60px;
+  width: 50px;
 `
 const Card = styled.div`
   max-width: 200px;

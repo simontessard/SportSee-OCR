@@ -19,13 +19,12 @@ import {
 const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 40px;
-  max-width: 1000px;
+  gap: 20px;
+  max-width: 700px;
 `
 
 const DataContainer = styled.div`
-  margin-left: 10px;
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 40px;

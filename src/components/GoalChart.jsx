@@ -21,11 +21,11 @@ function GoalChart(score) {
   return (
     <StyledResponsiveContainer width="30%" height={200}>
       <PieChart>
-        <text x={40} y={35} textAnchor="middle" dominantBaseline="middle">
+        <text x={35} y={35} textAnchor="middle" dominantBaseline="middle">
           Score
         </text>
         <text
-          x={125}
+          x={115}
           y={100}
           textAnchor="middle"
           dominantBaseline="middle"
@@ -35,7 +35,7 @@ function GoalChart(score) {
           {data[0].value}%
         </text>
         <text
-          x={125}
+          x={115}
           y={120}
           textAnchor="middle"
           dominantBaseline="middle"
@@ -48,7 +48,7 @@ function GoalChart(score) {
         <Pie
           data={data}
           dataKey="value"
-          cx={120}
+          cx={110}
           cy={100}
           innerRadius={60}
           fill="#8884d8"

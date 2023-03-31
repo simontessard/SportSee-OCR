@@ -18,6 +18,8 @@ const StyledResponsiveContainer = styled(ResponsiveContainer)`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
   border-radius: 5px;
   padding: 25px;
+  padding-right: 0px;
+  padding-left: 8px;
   max-width: 800px;
 `
 
@@ -128,7 +130,7 @@ function BarChartProgression(data) {
             fontSize: 14,
           }}
           tickLine={false}
-          tickMargin={30}
+          tickMargin={5}
           orientation="right"
           tickCount={3}
           type="number"
