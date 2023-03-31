@@ -3,7 +3,7 @@ import SideNav from '../components/SideNav'
 import styled from 'styled-components'
 import Title from '../components/Title'
 import StatsCardList from '../components/StatsCardList'
-import BarChartProgression from '../components/BarChartPogression'
+import ProgressionChart from '../components/ProgressionChart'
 import LineChartAverage from '../components/LineChart'
 import RadarChartPerformance from '../components/RadarChartPerformance'
 import GoalChart from '../components/GoalChart'
@@ -19,8 +19,7 @@ import {
 const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 20px;
-  max-width: 700px;
+  gap: 30px;
 `
 
 const DataContainer = styled.div`
@@ -34,7 +33,7 @@ const ChartContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  width: 100%;
+  width: 650px;
 `
 
 function Dashboard() {
@@ -88,7 +87,7 @@ function Dashboard() {
             <Title name={userData.name} />
             <ContentDiv>
               <ChartContainer>
-                <BarChartProgression data={userActivity} />
+                <ProgressionChart data={userActivity} />
                 <ContentDiv>
                   <LineChartAverage data={userAverage} />
                   <RadarChartPerformance data={userPerformance} />

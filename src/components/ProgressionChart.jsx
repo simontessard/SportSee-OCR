@@ -17,10 +17,7 @@ const StyledResponsiveContainer = styled(ResponsiveContainer)`
   background: #fbfbfb;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
   border-radius: 5px;
-  padding: 25px;
-  padding-right: 0px;
-  padding-left: 8px;
-  max-width: 800px;
+  padding-block: 25px;
 `
 
 const StyledDiv = styled.div`
@@ -101,16 +98,16 @@ const renderLegend = (props) => {
   )
 }
 
-function BarChartProgression(data) {
+function ProgressionChart(data) {
   const formattedData = data.data.sessions
   return (
-    <StyledResponsiveContainer width="95%" height={250}>
+    <StyledResponsiveContainer width="100%" height={250}>
       <BarChart
         data={formattedData}
         margin={{
           top: 5,
-          right: 30,
-          left: 20,
+          right: 0,
+          left: 15,
           bottom: 5,
         }}
         barGap={8}
@@ -156,7 +153,7 @@ function BarChartProgression(data) {
   )
 }
 
-BarChartProgression.defaultProps = {
+ProgressionChart.defaultProps = {
   data: {
     data: {
       sessions: [
@@ -200,8 +197,8 @@ BarChartProgression.defaultProps = {
   },
 }
 
-BarChartProgression.propTypes = {
+ProgressionChart.propTypes = {
   data: PropTypes.object,
 }
 
-export default BarChartProgression
+export default ProgressionChart
