@@ -16,8 +16,6 @@ import {
   fetchUserPerformance,
 } from '../api/service'
 
-import User from '../api/models/user.js'
-
 const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -46,28 +44,26 @@ function Dashboard() {
 
   const renderAfterCalled = useRef(true)
 
-  const [user, setUser] = useState(new User())
+  const [userData, setUserData] = useState()
+  const [userActivity, setUserActivity] = useState(false)
+  const [userAverage, setUserAverage] = useState(false)
+  const [userPerformance, setUserPerformance] = useState(false)
 
   const [Error, setError] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const [userData, userActivity, userSessions, userPerformance] = await Promise.all([
+        const [userData, userActivity, userAverage, userPerformance] = await Promise.all([
           fetchUserInfo(id),
           fetchUserActivity(id),
           fetchUserSessions(id),
           fetchUserPerformance(id),
         ])
-        // Define data to our object User and set it
-        const newUser = new User()
-        newUser.userInfos = userData.userInfos
-        newUser.score = userData.todayScore || userData.score
-        newUser.keyData = userData.keyData
-        newUser.sessionsActivity = userActivity
-        newUser.sessionsAverage = userSessions
-        newUser.performances = userPerformance
-        setUser(newUser)
+        setUserData(userData)
+        setUserActivity(userActivity.sessionsActivity)
+        setUserAverage(userAverage.sessionsAverage)
+        setUserPerformance(userPerformance.performances)
       } catch (error) {
         console.error('Une erreur est survenue:', error)
         setError(true)
@@ -88,19 +84,19 @@ function Dashboard() {
       <Header />
       <ContentDiv>
         <SideNav />
-        {user && (
+        {userData && (
           <DataContainer>
-            <Title name={user._userInfos.firstName} />
+            <Title name={userData.name} />
             <ContentDiv>
               <ChartContainer>
-                <BarChartProgression data={user.sessionsActivity} />
+                <BarChartProgression data={userActivity} />
                 <ContentDiv>
-                  <LineChartAverage data={user.sessionsAverage} />
-                  <RadarChartPerformance data={user.performances} />
-                  <GoalChart score={user.score} />
+                  <LineChartAverage data={userAverage} />
+                  <RadarChartPerformance data={userPerformance} />
+                  <GoalChart score={userData.goal} />
                 </ContentDiv>
               </ChartContainer>
-              <StatsCardList data={user.keyData} />
+              <StatsCardList data={userData.macro} />
             </ContentDiv>
           </DataContainer>
         )}
