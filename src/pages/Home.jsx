@@ -1,7 +1,7 @@
 import Header from '../components/Header'
 import SideNav from '../components/SideNav'
 import styled from 'styled-components'
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const ContentDiv = styled.div`
@@ -29,14 +29,22 @@ const StyledButton = styled.button`
 
 function Home() {
   const navigate = useNavigate()
+  const [useApiData, setUseApiData] = useState(true)
   return (
     <div>
       <Header />
       <ContentDiv>
         <SideNav />
         <UsersDiv>
-          <StyledButton onClick={() => navigate('/user/12')}>Utilisateur 1</StyledButton>
-          <StyledButton onClick={() => navigate('/user/18')}>Utilisateur 2</StyledButton>
+          <StyledButton onClick={() => navigate('/user/12', { state: useApiData })}>
+            Utilisateur 1
+          </StyledButton>
+          <StyledButton onClick={() => navigate('/user/18', { state: useApiData })}>
+            Utilisateur 2
+          </StyledButton>
+          <StyledButton onClick={() => setUseApiData(!useApiData)}>
+            Données API: {useApiData ? 'Oui' : 'Non'}
+          </StyledButton>
         </UsersDiv>
       </ContentDiv>
     </div>

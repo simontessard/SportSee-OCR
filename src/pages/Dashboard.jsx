@@ -8,13 +8,14 @@ import LineChartAverage from '../components/LineChart'
 import RadarChartPerformance from '../components/RadarChartPerformance'
 import GoalChart from '../components/GoalChart'
 import React, { useState, useEffect, useRef } from 'react'
-import { Navigate, useParams } from 'react-router-dom'
+import { Navigate, useParams, useLocation } from 'react-router-dom'
 import {
   fetchUserInfo,
   fetchUserActivity,
   fetchUserSessions,
   fetchUserPerformance,
 } from '../api/service'
+import data from '../api/mockedData/data'
 
 const ContentDiv = styled.div`
   display: flex;
@@ -39,13 +40,14 @@ const ChartContainer = styled.div`
 function Dashboard() {
   // Get the id of the user in the URL
   const { id } = useParams()
+  const { state } = useLocation()
 
   const renderAfterCalled = useRef(true)
 
-  const [userData, setUserData] = useState()
-  const [userActivity, setUserActivity] = useState(false)
-  const [userAverage, setUserAverage] = useState(false)
-  const [userPerformance, setUserPerformance] = useState(false)
+  const [userData, setUserData] = useState(false)
+  const [userActivity, setUserActivity] = useState(undefined)
+  const [userAverage, setUserAverage] = useState(undefined)
+  const [userPerformance, setUserPerformance] = useState(undefined)
 
   const [Error, setError] = useState(false)
 
@@ -58,10 +60,12 @@ function Dashboard() {
           fetchUserSessions(id),
           fetchUserPerformance(id),
         ])
-        setUserData(userData)
-        setUserActivity(userActivity.sessionsActivity)
-        setUserAverage(userAverage.sessionsAverage)
-        setUserPerformance(userPerformance.performances)
+        if (state) {
+          setUserData(userData)
+          setUserActivity(userActivity.sessionsActivity)
+          setUserAverage(userAverage.sessionsAverage)
+          setUserPerformance(userPerformance.performances)
+        }
       } catch (error) {
         console.error('Une erreur est survenue:', error)
         setError(true)
@@ -70,7 +74,7 @@ function Dashboard() {
     if (renderAfterCalled.current) {
       fetchData()
     }
-  }, [id])
+  }, [id, state])
 
   // In case the id given is wrong, error page is displayed
   if (Error) {
@@ -82,22 +86,20 @@ function Dashboard() {
       <Header />
       <ContentDiv>
         <SideNav />
-        {userData && (
-          <DataContainer>
-            <Title name={userData.name} />
-            <ContentDiv>
-              <ChartContainer>
-                <ProgressionChart data={userActivity} />
-                <ContentDiv>
-                  <LineChartAverage data={userAverage} />
-                  <RadarChartPerformance data={userPerformance} />
-                  <GoalChart score={userData.goal} />
-                </ContentDiv>
-              </ChartContainer>
-              <StatsCardList data={userData.macro} />
-            </ContentDiv>
-          </DataContainer>
-        )}
+        <DataContainer>
+          <Title name={userData.name} />
+          <ContentDiv>
+            <ChartContainer>
+              <ProgressionChart data={userActivity} />
+              <ContentDiv>
+                <LineChartAverage data={userAverage} />
+                <RadarChartPerformance data={userPerformance} />
+                <GoalChart score={userData.goal} />
+              </ContentDiv>
+            </ChartContainer>
+            <StatsCardList data={userData.macro} />
+          </ContentDiv>
+        </DataContainer>
       </ContentDiv>
     </div>
   )
