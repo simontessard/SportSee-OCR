@@ -40,11 +40,18 @@ function capitalizeFirstLetter(string) {
 }
 
 function StatsCard({ image, type, count }) {
+  let unit = 'kCal'
+  if (type !== 'calories') {
+    unit = 'g'
+  }
   return (
     <Card>
       <StyledImg src={image} alt="" />
       <DataDisplay>
-        <Number>{count}</Number>
+        <Number>
+          {count}
+          {unit}
+        </Number>
         <Type>{capitalizeFirstLetter(type)}</Type>
       </DataDisplay>
     </Card>
