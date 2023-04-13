@@ -15,7 +15,6 @@ import {
   fetchUserSessions,
   fetchUserPerformance,
 } from '../api/service'
-import data from '../api/mockedData/data'
 
 const ContentDiv = styled.div`
   display: flex;
