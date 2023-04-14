@@ -27,9 +27,14 @@ In the project directory, run:
 
 Still in the project directory, run:
 
-### `npm run start`
+### `npm run start-dev`
 
-Runs the app in the development mode.
+Runs the app in the development mode with mocked Data
+It's going to say "Something is already running on port 3000.
+
+### OR `npm run start-prod`
+
+Runs the app in the development mode with API Data
 It's going to say "Something is already running on port 3000.
 
 ### Type `y`

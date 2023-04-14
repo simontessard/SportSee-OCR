@@ -3,6 +3,14 @@ import userActivity from '../models/userActivity.js'
 import userAverage from '../models/userAverage.js'
 import userPerformance from '../models/userPerformance.js'
 
+import {
+  USER_MAIN_DATA,
+  USER_ACTIVITY,
+  USER_AVERAGE_SESSIONS,
+  USER_PERFORMANCE,
+} from '../mockedData/data.js'
+const env = process.env.REACT_APP_DEVELOPMENT || 'false'
+
 // Host and API adress
 /** @const {string} */
 const host = 'http://localhost:3000'
@@ -15,10 +23,18 @@ const urlAPI = host + '/user/'
  * @returns {object} - The data of the user
  */
 export const fetchUserInfo = async (id) => {
-  const response = await fetch(urlAPI + id)
-  const data = await response.json()
-  const newUserData = new userData(data.data)
-  return newUserData
+  // Development environment
+  if (env === 'true') {
+    const data = USER_MAIN_DATA
+    const newUserData = new userData(id === '12' ? data[0] : data[1])
+    return newUserData
+    // Production environment
+  } else {
+    const response = await fetch(urlAPI + id)
+    const data = await response.json()
+    const newUserData = new userData(data.data)
+    return newUserData
+  }
 }
 
 /**
@@ -27,10 +43,18 @@ export const fetchUserInfo = async (id) => {
  * @returns {object} - The data of the user
  */
 export const fetchUserActivity = async (id) => {
-  const response = await fetch(urlAPI + id + '/activity')
-  const data = await response.json()
-  const userActivityData = new userActivity(data.data)
-  return userActivityData
+  // Development environment
+  if (env === 'true') {
+    const data = USER_ACTIVITY
+    const userActivityData = new userActivity(id === '12' ? data[0] : data[1])
+    return userActivityData
+    // Production environment
+  } else {
+    const response = await fetch(urlAPI + id + '/activity')
+    const data = await response.json()
+    const userActivityData = new userActivity(data.data)
+    return userActivityData
+  }
 }
 
 /**
@@ -39,10 +63,18 @@ export const fetchUserActivity = async (id) => {
  * @returns {object} - The data of the user
  */
 export const fetchUserSessions = async (id) => {
-  const response = await fetch(urlAPI + id + '/average-sessions')
-  const data = await response.json()
-  const userAverageData = new userAverage(data.data)
-  return userAverageData
+  // Development environment
+  if (env === 'true') {
+    const data = USER_AVERAGE_SESSIONS
+    const userAverageData = new userAverage(id === '12' ? data[0] : data[1])
+    return userAverageData
+    // Production environment
+  } else {
+    const response = await fetch(urlAPI + id + '/average-sessions')
+    const data = await response.json()
+    const userAverageData = new userAverage(data.data)
+    return userAverageData
+  }
 }
 
 /**
@@ -51,8 +83,16 @@ export const fetchUserSessions = async (id) => {
  * @returns {object} - The data of the user
  */
 export const fetchUserPerformance = async (id) => {
-  const response = await fetch(urlAPI + id + '/performance')
-  const data = await response.json()
-  const userPerformanceData = new userPerformance(data.data)
-  return userPerformanceData
+  // Development environment
+  if (env === 'true') {
+    const data = USER_PERFORMANCE
+    const userPerformanceData = new userPerformance(id === '12' ? data[0] : data[1])
+    return userPerformanceData
+    // Production environment
+  } else {
+    const response = await fetch(urlAPI + id + '/performance')
+    const data = await response.json()
+    const userPerformanceData = new userPerformance(data.data)
+    return userPerformanceData
+  }
 }
