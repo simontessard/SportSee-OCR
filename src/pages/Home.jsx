@@ -43,7 +43,7 @@ function Home() {
             Utilisateur 2
           </StyledButton>
           <StyledButton onClick={() => setUseApiData(!useApiData)}>
-            Données API: {useApiData ? 'Oui' : 'Non'}
+            Données PropDefault: {useApiData ? 'Non' : 'Oui'}
           </StyledButton>
         </UsersDiv>
       </ContentDiv>
